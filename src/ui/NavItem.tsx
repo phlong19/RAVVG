@@ -4,7 +4,7 @@ import { useMenu } from "../context/MenuContext";
 
 interface Props {
   to: string;
-  type?: string;
+  type?: "header";
   field: string;
 }
 

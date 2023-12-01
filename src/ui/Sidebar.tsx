@@ -1,35 +1,41 @@
-import NavItem from "./NavItem";
-import MenuButtons from "./MenuButtons";
+import SideHeader from "./SideHeader";
 
-import { apiURL, categories, getAPI, sitemap } from "../utils/variables";
-import { useClickOutside } from "../hooks/useClickOutside";
-import { useMenu } from "../context/MenuContext";
+import SideIconLink from "./SideIconLink";
+import { categories, newReleases } from "../utils/variables";
 
 function Sidebar() {
-  const { close } = useMenu();
-  const ref = useClickOutside(close);
-
   return (
-    <nav
-      ref={ref}
-      className="absolute right-0 top-2 h-3/4 w-[300px] overflow-hidden overflow-y-auto rounded-[33px] border border-white bg-zinc-900 p-6 shadow-2xl shadow-zinc-200"
-    >
-      <MenuButtons />
+    <aside className="mr-5 mt-10 box-border h-full w-[200px]">
+      {/* home */}
+      <SideHeader to="/" type="header">
+        Home
+      </SideHeader>
 
-      <ul className="space-y-3 px-3">
-        <NavItem to="/" field="Home" type="header" />
-        <NavItem to="games" field="All Games" type="header" />
-        <NavItem to="games/browse" field="Browse" type="header" />
-
-        {categories.map((category) => (
-          <NavItem to={category} field={category} />
+      {/* new re */}
+      <SideHeader type="list" label="New Releases">
+        {newReleases.map((item, i) => (
+          <SideIconLink to={`discover/${item.to}`} key={i} icon={item.icon}>
+            {item.label}
+          </SideIconLink>
         ))}
+      </SideHeader>
 
-        <NavItem to={apiURL} field="API" type="header" />
-        <NavItem to={getAPI} field="Get an API key" type="header" />
-        <NavItem to={sitemap} field="Sitemap" type="header" />
-      </ul>
-    </nav>
+      {/* all */}
+      <SideHeader type="header" to="games">
+        All Games
+      </SideHeader>
+
+      {/* browse */}
+      <SideHeader type="browse" to="games/browse">
+        <ul>
+          {categories.map((item, i) => (
+            <SideIconLink key={i} to={item.category} icon={item.icon}>
+              {item.category}
+            </SideIconLink>
+          ))}
+        </ul>
+      </SideHeader>
+    </aside>
   );
 }
 

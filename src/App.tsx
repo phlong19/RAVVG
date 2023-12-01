@@ -32,8 +32,8 @@ function App() {
               {newReleases.map((slug, key) => (
                 <Route
                   key={key}
-                  path={`discover/${slug}`}
-                  element={<Discover slug={slug} />}
+                  path={`discover/${slug.to}`}
+                  element={<Discover slug={slug.to} />}
                 />
               ))}
             </Route>
@@ -49,8 +49,8 @@ function App() {
               {categories.map((category, key) => (
                 <Route
                   key={key}
-                  path={category} // path="platforms"
-                  element={<Category name={category} />}
+                  path={category.category} // path="platforms"
+                  element={<Category name={category.category} />}
                 />
               ))}
             </Route>
