@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import AppLayout from "./ui/AppLayout";
 import DiscoverLayout from "./ui/DiscoverLayout";
@@ -17,51 +18,63 @@ import NotFound from "./pages/NotFound";
 
 import { categories, newReleases } from "./utils/variables";
 import { MenuMobile } from "./context/MenuContext";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+    },
+  },
+});
 
 function App() {
   return (
-    <MenuMobile>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route index element={<Home />} />
+    <QueryClientProvider client={client}>
+      <ReactQueryDevtools />
+      <MenuMobile>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<AppLayout />}>
+              <Route index element={<Home />} />
 
-            {/* new releases */}
-            <Route element={<DiscoverLayout />}>
-              <Route path="discover" element={<Navigate to="/" />} />
-              {newReleases.map((slug, key) => (
-                <Route
-                  key={key}
-                  path={`discover/${slug.to}`}
-                  element={<Discover slug={slug.to} />}
-                />
-              ))}
+              {/* new releases */}
+              <Route element={<DiscoverLayout />}>
+                <Route path="discover" element={<Navigate to="/" />} />
+                {newReleases.map((slug, key) => (
+                  <Route
+                    key={key}
+                    path={`discover/${slug.to}`}
+                    element={<Discover slug={slug.to} />}
+                  />
+                ))}
+              </Route>
+
+              {/* games */}
+              <Route path="games" element={<AllGames />} />
+              <Route path="games/:category" element={<GameCategory />} />
+              <Route path="games/:name" element={<Game />} />
+              <Route path="games/browse" element={<Categories />} />
+
+              {/* categories */}
+              <Route element={<CategoryLayout />}>
+                {categories.map((category, key) => (
+                  <Route
+                    key={key}
+                    path={category.category} // path="platforms"
+                    element={<Category name={category.category} />}
+                  />
+                ))}
+              </Route>
+
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<Signup />} />
             </Route>
-
-            {/* games */}
-            <Route path="games" element={<AllGames />} />
-            <Route path="games/:category" element={<GameCategory />} />
-            <Route path="games/:name" element={<Game />} />
-            <Route path="games/browse" element={<Categories />} />
-
-            {/* categories */}
-            <Route element={<CategoryLayout />}>
-              {categories.map((category, key) => (
-                <Route
-                  key={key}
-                  path={category.category} // path="platforms"
-                  element={<Category name={category.category} />}
-                />
-              ))}
-            </Route>
-
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </MenuMobile>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </MenuMobile>
+    </QueryClientProvider>
   );
 }
 

@@ -1,16 +1,15 @@
 import GameCardInfo from "../../ui/GameCardInfo";
-import { fakeData } from "./fakeQueryAPI";
+import { useGameList } from "./useGameList";
 
 function GamesList() {
-  // 1. query hook
-  const games = fakeData.results;
-  // 2.1 waiting with spinner
+  const { games, isLoading } = useGameList();
 
-  // 4. hook back query and render
+  if (isLoading) return <div></div>;
+
   return (
-    <div className="m-auto flex h-full max-w-[480px] flex-col justify-center gap-y-6 lg:grid lg:max-w-full lg:grid-cols-3 lg:gap-x-6 xl:grid-cols-4">
-      {games.map((game) => (
-        <GameCardInfo game={game} />
+    <div className="m-auto overflow-y-auto flex max-w-[480px] flex-col gap-y-6 lg:grid lg:max-w-full lg:grid-cols-3 lg:gap-x-6 xl:grid-cols-4">
+      {games!.map((game, i) => (
+        <GameCardInfo key={i} game={game} />
       ))}
     </div>
   );

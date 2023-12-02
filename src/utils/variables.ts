@@ -33,3 +33,7 @@ const getAPI = import.meta.env.VITE_GET_API;
 const sitemap = import.meta.env.VITE_SITEMAP;
 
 export { apiURL, getAPI, sitemap };
+
+export const baseGameURL = `https://api.rawg.io/api/games?key=${
+  import.meta.env.VITE_KEY
+}&`;
