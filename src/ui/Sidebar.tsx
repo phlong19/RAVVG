@@ -5,7 +5,7 @@ import { categories, newReleases } from "../utils/variables";
 
 function Sidebar() {
   return (
-    <aside className="mr-5 mt-10 box-border h-full w-[200px]">
+    <aside className="mr-5 mt-10 box-border w-[200px]">
       {/* home */}
       <SideHeader to="/" type="header">
         Home

@@ -6,3 +6,8 @@ export function capitalized(s: string) {
   const final = arr.join(" ");
   return final;
 }
+
+export function firstCapMoveDash(s: string) {
+  const final = s.slice(0, 1).toUpperCase() + s.slice(1).replaceAll("-", " ");
+  return final;
+}

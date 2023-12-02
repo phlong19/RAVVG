@@ -8,7 +8,7 @@ function Blur({ children }: { children: React.ReactNode }) {
     <div
       className={`${
         !show ? "hidden" : ""
-      } fixed left-0 top-0 z-[99] h-screen w-full backdrop-blur-md transition-all duration-500 md:hidden`}
+      } fixed left-0 top-0 z-[99] h-full w-full backdrop-blur-md transition-all duration-500 lg:hidden`}
     >
       {children}
     </div>

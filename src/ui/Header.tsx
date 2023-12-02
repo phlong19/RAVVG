@@ -7,11 +7,11 @@ function Header() {
   const { open } = useMenu();
 
   return (
-    <header className="flex items-center justify-between px-5 py-3.5 md:col-span-2 md:py-8 md:px-10">
+    <header className="flex items-center justify-between px-5 py-4 lg:col-span-2 lg:py-8 lg:px-10">
       <Logo />
       <SearchBox />
 
-      <nav className="hidden md:flex md:gap-3 md:items-center">
+      <nav className="hidden lg:flex lg:gap-3 lg:items-center">
         <p>login</p>
         <p>sign up</p>
         <p>API</p>
@@ -20,7 +20,7 @@ function Header() {
       <button
         aria-label="toggle-menu"
         onClick={open}
-        className="text-3xl text-white md:hidden"
+        className="text-3xl text-white lg:hidden"
       >
         <HiBars3 />
       </button>

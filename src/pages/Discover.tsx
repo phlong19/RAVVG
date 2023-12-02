@@ -1,9 +1,15 @@
+import ControlList from "../ui/ControlList";
+import MainLayout from "../ui/MainLayout";
+import { firstCapMoveDash } from "../utils/helpers";
+
 function Discover({ slug }: { slug: string }) {
+  const title = firstCapMoveDash(slug);
+
   return (
-    <div>
-      <h1>{slug}</h1>
+    <MainLayout title={title}>
+      <ControlList />
       dicover page
-    </div>
+    </MainLayout>
   );
 }
 

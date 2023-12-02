@@ -10,15 +10,15 @@ function AppLayout() {
     <AppContainer>
       <Header />
 
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <MobileNav />
       </div>
 
-      <div className="hidden md:block md:pl-10">
+      <div className="hidden lg:block lg:pl-10">
         <Sidebar />
       </div>
 
-      <main className="md:pr-10">
+      <main className="lg:pr-10">
         <Outlet />
       </main>
     </AppContainer>
