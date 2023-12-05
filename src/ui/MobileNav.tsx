@@ -16,7 +16,7 @@ function MobileNav() {
         ref={ref}
         className={`${
           show ? "block" : "hidden"
-        } absolute right-0 top-2 h-3/4 w-[300px] overflow-y-auto rounded-[33px] border border-white bg-zinc-900 p-6 shadow-2xl shadow-zinc-50`}
+        } absolute right-0 top-2 h-3/4 w-[300px] overflow-y-auto rounded-[33px] border border-white bg-zinc-900 p-6 shadow-lg shadow-zinc-50`}
       >
         <MenuButtons />
 

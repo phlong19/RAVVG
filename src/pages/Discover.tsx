@@ -1,3 +1,4 @@
+import GamesList from "../features/game/GamesList";
 import ControlList from "../ui/ControlList";
 import MainLayout from "../ui/MainLayout";
 import { firstCapMoveDash } from "../utils/helpers";
@@ -8,7 +9,7 @@ function Discover({ slug }: { slug: string }) {
   return (
     <MainLayout title={title}>
       <ControlList />
-      dicover page
+      <GamesList />
     </MainLayout>
   );
 }
