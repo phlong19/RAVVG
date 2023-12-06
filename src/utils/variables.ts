@@ -25,10 +25,11 @@ export const categories = [
   { category: "publishers", icon: "FaLayerGroup" },
 ];
 
+const URL = import.meta.env.VITE_ORIGINAL_URL;
 const apiURL = import.meta.env.VITE_API_URL;
 const getAPI = import.meta.env.VITE_GET_API;
 const sitemap = import.meta.env.VITE_SITEMAP;
-export { apiURL, getAPI, sitemap };
+export { URL, apiURL, getAPI, sitemap };
 
 // BASE URL
 export const baseGameURL = `https://api.rawg.io/api/games?key=${

@@ -80,6 +80,9 @@
 }
 
 /* active nav link */
+li a.active {
+  cursor: not-allowed;
+}
 li a.active div {
   background-color: white;
   color: black;

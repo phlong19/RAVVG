@@ -21,7 +21,7 @@ export function useGamesList() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["games"],
+    queryKey: ["games", slug],
     queryFn: () => getGameList(slug),
     retry: false,
   });

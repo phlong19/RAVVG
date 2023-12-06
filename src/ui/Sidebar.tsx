@@ -1,7 +1,7 @@
 import SideHeader from "./SideHeader";
 
 import SideIconLink from "./SideIconLink";
-import { categories, newReleases } from "../utils/variables";
+import { URL, categories, newReleases } from "../utils/variables";
 
 function Sidebar() {
   return (
@@ -34,6 +34,16 @@ function Sidebar() {
             </SideIconLink>
           ))}
         </ul>
+      </SideHeader>
+
+      <SideHeader type="list">
+        <em className="text-base">
+          This page is a cheap copy of{" "}
+          <a href={URL} className="text-lg text-yellow-400">
+            👉 rawg.io
+          </a>{" "}
+          for <span className="text-red-500">learning purpose</span> ;)
+        </em>
       </SideHeader>
     </aside>
   );

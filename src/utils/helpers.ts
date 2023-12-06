@@ -9,7 +9,7 @@ export function capitalized(s: string) {
   return final;
 }
 
-export function numberWithCommas(x:number) {
+export function numberWithCommas(x: number) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
@@ -28,8 +28,6 @@ export function getStartDate(s: string) {
   let today = new Date();
   const year = today.getFullYear();
   const lastYear = year - 1;
-  const firstDateofThisYear = new Date(`1-1-${year}`);
-  const firstDateofLastYear = new Date(`1-1-${lastYear}`);
 
   switch (s) {
     case "last-30-days":
@@ -39,17 +37,19 @@ export function getStartDate(s: string) {
       startDate = subDays(today, 7);
       break;
     case "next-week":
-      startDate = addDays(today, 7);
+      // swap
+      startDate = today;
+      today = addDays(today, 7);
       break;
     case "best-of-the-year":
-      startDate = firstDateofThisYear;
+      startDate = new Date(`1-1-${year}`);
       break;
     case `popular-in-${lastYear}`:
-      startDate = firstDateofLastYear;
-      today = new Date(`31-12-${lastYear}`);
+      startDate = new Date(`1-1-${lastYear}`);
+      today = new Date(`12-31-${lastYear}`);
       break;
     case "home":
-      startDate = subMonths(today, 6);
+      startDate = subMonths(today, 3);
       break;
     default:
       throw new Error("Invalid date time");
@@ -59,4 +59,17 @@ export function getStartDate(s: string) {
   const finalToday = format(today, "yyyy-MM-dd");
 
   return { finalStartDate, finalToday };
+}
+
+export function makeid(length: number) {
+  let result = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
 }

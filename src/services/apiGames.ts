@@ -5,25 +5,25 @@ interface Data {
   results: [];
 }
 
-let query = baseGameURL;
+let date: {
+  finalStartDate: string;
+  finalToday: string;
+};
 
 export async function getGameList(s?: string) {
+  let query = baseGameURL;
   try {
     if (s && s !== "home") {
-      const { finalStartDate: startDate, finalToday: endDate } =
-        getStartDate(s);
-      query = query + `date=${startDate},${endDate}`;
+      date = getStartDate(s);
     }
     if (s === "home") {
-      const { finalStartDate: startDate, finalToday: endDate } =
-        getStartDate(s);
-      query = query + `dates=${startDate},${endDate}&ordering=-rating`;
+      date = getStartDate(s);
     }
+    query =
+      query + `dates=${date.finalStartDate},${date.finalToday}&ordering=-added`;
 
-    // const res = await fetch(query, { mode: "no-cors" });
     const res = await fetch(query);
     const data: Data = await res.json();
-    console.log(data);
     //
     return data.results;
     //

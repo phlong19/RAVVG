@@ -5,12 +5,12 @@ import { useGamesList } from "./useGamesList";
 import { fakeData } from "../../../data/data";
 
 function GamesList() {
-  // const { games, isLoading, error } = useGamesList();
+  const { games, isLoading, error } = useGamesList();
 
-  // if (isLoading) return <Spinner />;
-  // if (error) return <ErrorFallBack />;
+  if (isLoading) return <Spinner />;
+  if (error) return <ErrorFallBack />;
 
-  const games = fakeData.results;
+  // const games = fakeData.results;
   return (
     <>
       <div className="m-auto flex max-w-[480px] flex-col gap-y-6 lg:block lg:max-w-full lg:columns-3 lg:gap-x-6 2xl:columns-4">

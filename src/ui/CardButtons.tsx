@@ -5,8 +5,7 @@ import { HiMiniEllipsisHorizontal, HiOutlineGift } from "react-icons/hi2";
 interface Props {
   added: number;
   added_by_status: {
-    playing: number;
-    yet: number;
+    toplay: number;
   };
 }
 
@@ -17,11 +16,9 @@ function CardButtons({ added_by_status, added }: Props) {
         <span className="min-h-3 min-w-3 mr-[6px] text-sm">
           <FaPlus />
         </span>
-        <span>
-          {added_by_status?.playing
-            ? numberWithCommas(added - added_by_status.playing)
-            : numberWithCommas(added - (added_by_status.yet + 1))}
-        </span>
+        {added_by_status?.toplay && (
+          <span>{numberWithCommas(added - added_by_status.toplay)}</span>
+        )}
       </button>
       <button
         title="Giveaway"
