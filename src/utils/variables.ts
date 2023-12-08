@@ -1,4 +1,5 @@
 const lastYear = Number(new Date().getFullYear()) - 1;
+export const ITEM_PER_PAGE = 20;
 
 export const newReleases = [
   { label: "Last 30 days", to: "last-30-days", icon: "FaStar" },
@@ -34,4 +35,4 @@ export { URL, apiURL, getAPI, sitemap };
 // BASE URL
 export const baseGameURL = `https://api.rawg.io/api/games?key=${
   import.meta.env.VITE_KEY
-}&page_size=20&`;
+}&page_size=${ITEM_PER_PAGE}&`;

@@ -2,16 +2,24 @@ import { baseGameURL } from "../utils/variables";
 import { getStartDate } from "../utils/helpers";
 
 interface Data {
+  count: number;
+  next: string;
+  previous: string;
   results: [];
 }
 
-let date: {
+type Date = {
   finalStartDate: string;
   finalToday: string;
 };
 
-export async function getGameList(s?: string) {
+export async function getGameList(s?: string, page = 1) {
   let query = baseGameURL;
+  let date: Date = {
+    finalStartDate: "none",
+    finalToday: "none",
+  };
+
   try {
     if (s && s !== "home") {
       date = getStartDate(s);
@@ -20,12 +28,17 @@ export async function getGameList(s?: string) {
       date = getStartDate(s);
     }
     query =
-      query + `dates=${date.finalStartDate},${date.finalToday}&ordering=-added`;
+      query +
+      `dates=${date.finalStartDate},${date.finalToday}&ordering=-added&page=${page}`;
+
+    if (s === undefined) {
+      query = baseGameURL + `page=${page}`;
+    }
 
     const res = await fetch(query);
     const data: Data = await res.json();
     //
-    return data.results;
+    return data;
     //
   } catch (error) {
     console.error(error);

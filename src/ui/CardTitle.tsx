@@ -8,7 +8,7 @@ interface Props {
 
 function CardTitle({ slug, name, icon }: Props) {
   return (
-    <Link to={`/games/${slug}`} className="duration-300 hover:text-white/40">
+    <Link to={`/game/${slug}`} className="duration-300 hover:text-white/40">
       <span className="text-2xl font-bold">
         {name}{" "}
         <img

@@ -5,12 +5,10 @@ import CardPlatforms from "./CardPlatforms";
 import CardButtons from "./CardButtons";
 import CardInfoHidden from "./CardInfoHidden";
 import CardTitle from "./CardTitle";
+import { mostRating } from "../utils/helpers";
 
 function GameCard({ game }: GameProps) {
-  const icon =
-    game.ratings.length > 1
-      ? game.ratings.sort((a, b) => b.count - a.count)[0].title
-      : "";
+  const icon = mostRating(game.ratings);
 
   return (
     <div className="group/item mb-6 max-w-full break-inside-avoid px-2 duration-300 hover:scale-[1.05] md:px-0">

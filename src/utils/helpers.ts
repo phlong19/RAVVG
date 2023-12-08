@@ -61,15 +61,15 @@ export function getStartDate(s: string) {
   return { finalStartDate, finalToday };
 }
 
-export function makeid(length: number) {
-  let result = "";
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  const charactersLength = characters.length;
-  let counter = 0;
-  while (counter < length) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    counter += 1;
-  }
-  return result;
+export function mostRating(
+  ratings: {
+    count: number;
+    title: string;
+  }[],
+) {
+  const icon: string =
+    ratings.length > 1
+      ? ratings.sort((a, b) => b.count - a.count)[0].title
+      : "";
+  return icon;
 }

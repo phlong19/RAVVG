@@ -1,9 +1,7 @@
-import { useParams } from "react-router-dom";
+import GameDetails from "../features/game/GameDetails";
 
 function Game() {
-  const { id } = useParams();
-
-  return <div>single game with {id}</div>;
+  return <GameDetails />;
 }
 
 export default Game;

@@ -19,6 +19,7 @@ import NotFound from "./pages/NotFound";
 import { categories, newReleases } from "./utils/variables";
 import { MenuMobile } from "./context/MenuContext";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ScrollToTop from "./ui/ScrollToTop";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -35,6 +36,7 @@ function App() {
       <ReactQueryDevtools />
       <MenuMobile>
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route element={<AppLayout />}>
               <Route index element={<Home />} />
@@ -54,7 +56,7 @@ function App() {
               {/* games */}
               <Route path="games" element={<AllGames />} />
               <Route path="games/:category" element={<GameCategory />} />
-              <Route path="games/:name" element={<Game />} />
+              <Route path="game/:name" element={<Game />} />
               <Route path="games/browse" element={<Categories />} />
 
               {/* categories */}

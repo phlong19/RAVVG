@@ -13,18 +13,20 @@ function CardButtons({ added_by_status, added }: Props) {
   return (
     <div className="flex">
       <button className="game-info-btn">
-        <span className="min-h-3 min-w-3 mr-[6px] text-sm">
+        <span className="mr-[6px] text-sm">
           <FaPlus />
         </span>
         {added_by_status?.toplay && (
-          <span>{numberWithCommas(added - added_by_status.toplay)}</span>
+          <span className="mr-2">
+            {numberWithCommas(added - added_by_status.toplay)}
+          </span>
         )}
       </button>
       <button
         title="Giveaway"
         className="game-info-btn invisible group-hover/item:visible"
       >
-        <span className="min-h-3 min-w-3 self-center px-0.5 text-lg">
+        <span className="self-center px-0.5 text-lg">
           <HiOutlineGift />
         </span>
       </button>
@@ -32,7 +34,7 @@ function CardButtons({ added_by_status, added }: Props) {
         title="More"
         className="game-info-btn invisible group-hover/item:visible"
       >
-        <span className="min-h-3 min-w-3 self-center px-0.5 text-2xl font-bold">
+        <span className="self-center px-0.5 text-2xl font-bold">
           <HiMiniEllipsisHorizontal />
         </span>
       </button>
