@@ -1,20 +1,12 @@
 interface Props {
-  disabled?: boolean;
-  onClick?: () => void;
+  icon: React.ReactElement;
   children: React.ReactNode;
-  type?: "active" | "pagination" | "icon";
 }
 
-function Button({ onClick, children, disabled, type = "pagination" }: Props) {
-  const base =
-    "flex items-center justify-between gap-1 rounded-md border border-white/40 bg-[#202020] px-3 py-1 shadow-sm shadow-white/70 hover:bg-white/70 hover:text-black";
-  const styles = {
-    pagination: base, // default
-    active: base + " font-bold bg-white text-black cursor-not-allowed",
-    icon: base + " font-bold",
-  };
+function Button({ icon, children }: Props) {
   return (
-    <button disabled={disabled} onClick={onClick} className={styles[type]}>
+    <button className="mt-2.5 inline-flex h-12 w-full shrink-0 items-center justify-center gap-2 rounded bg-white/10 px-6 text-base text-white/50">
+      <span>{icon}</span>
       {children}
     </button>
   );

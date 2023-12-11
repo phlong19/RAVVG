@@ -61,15 +61,41 @@ export function getStartDate(s: string) {
   return { finalStartDate, finalToday };
 }
 
-export function mostRating(
-  ratings: {
-    count: number;
-    title: string;
-  }[],
-) {
+interface Ratings {
+  id: number;
+  count: number;
+  title: string;
+  percent: number;
+}
+
+export function sortRatingsById(ratings: Ratings[]) {
+  const sorted = ratings.slice().sort((a, b) => b.id - a.id);
+  return sorted;
+}
+
+export function mostRating(ratings: Ratings[]) {
   const icon: string =
     ratings.length > 1
-      ? ratings.sort((a, b) => b.count - a.count)[0].title
+      ? ratings.slice().sort((a, b) => b.count - a.count)[0].title
       : "";
   return icon;
+}
+
+export const getColorForRating = (ratingId: number) => {
+  switch (ratingId) {
+    case 5:
+      return "linear-gradient(180deg,#b4ec51,#429321)";
+    case 3:
+      return "linear-gradient(180deg,#fad961,#f76b1c)";
+    case 1:
+      return "linear-gradient(180deg,#ff5764,#f11a2a)";
+    case 4:
+      return "linear-gradient(0deg,#4354b9,#649bff)";
+    default:
+      return "black";
+  }
+};
+
+export function generateComma(length: number, i: number) {
+  return i === length - 1 ? "" : ", ";
 }

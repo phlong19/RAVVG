@@ -15,6 +15,7 @@ function CardTitle({ slug, name, icon }: Props) {
           className="mb-1 inline-flex max-h-[24px] max-w-[27px]"
           src={`/${icon}.png`}
           title={icon}
+          loading="lazy"
         />
       </span>
     </Link>

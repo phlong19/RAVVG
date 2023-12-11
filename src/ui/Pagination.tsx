@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { ITEM_PER_PAGE } from "../utils/variables";
-import Button from "./Button";
+import PaginationButton from "./PaginationButton";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 
 // const totalItems = 288;
@@ -45,7 +45,7 @@ function Pagination({ count }: { count: number }) {
 
   return (
     <div className="mb-1 flex justify-center gap-2 px-3 py-4 lg:justify-end">
-      <Button
+      <PaginationButton
         type="icon"
         disabled={currentPage < 2}
         onClick={() => handlePagination("prev")}
@@ -54,40 +54,44 @@ function Pagination({ count }: { count: number }) {
           <FaAngleDoubleLeft />
         </span>
         Previous
-      </Button>
+      </PaginationButton>
 
       {currentPage > 2 && (
-        <Button onClick={() => handlePagination("first")}>1</Button>
+        <PaginationButton onClick={() => handlePagination("first")}>
+          1
+        </PaginationButton>
       )}
       {currentPage > 4 && <span className="pt-2">...</span>}
       {currentPage > 3 && (
-        <Button onClick={() => handlePagination("prev2")}>
+        <PaginationButton onClick={() => handlePagination("prev2")}>
           {currentPage - 2}
-        </Button>
+        </PaginationButton>
       )}
       {currentPage > 1 && (
-        <Button onClick={() => handlePagination("prev")}>
+        <PaginationButton onClick={() => handlePagination("prev")}>
           {currentPage - 1}
-        </Button>
+        </PaginationButton>
       )}
-      <Button disabled={true} type="active">
+      <PaginationButton disabled={true} type="active">
         {currentPage}
-      </Button>
+      </PaginationButton>
       {currentPage !== totalPages && (
-        <Button onClick={() => handlePagination("next")}>
+        <PaginationButton onClick={() => handlePagination("next")}>
           {currentPage + 1}
-        </Button>
+        </PaginationButton>
       )}
       {currentPage < totalPages - 3 && (
-        <Button onClick={() => handlePagination("next2")}>
+        <PaginationButton onClick={() => handlePagination("next2")}>
           {currentPage + 2}
-        </Button>
+        </PaginationButton>
       )}
       {currentPage < totalPages - 5 && <span className="pt-2">...</span>}
       {currentPage < totalPages - 1 && (
-        <Button onClick={() => handlePagination("last")}>{totalPages}</Button>
+        <PaginationButton onClick={() => handlePagination("last")}>
+          {totalPages}
+        </PaginationButton>
       )}
-      <Button
+      <PaginationButton
         type="icon"
         disabled={currentPage === totalPages}
         onClick={() => handlePagination("next")}
@@ -96,7 +100,7 @@ function Pagination({ count }: { count: number }) {
         <span>
           <FaAngleDoubleRight />
         </span>
-      </Button>
+      </PaginationButton>
     </div>
   );
 }

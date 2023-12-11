@@ -2,6 +2,8 @@ import SideHeader from "./SideHeader";
 
 import SideIconLink from "./SideIconLink";
 import { URL, categories, newReleases } from "../utils/variables";
+import { firstCap } from "../utils/helpers";
+import Copy from "./Copy";
 
 function Sidebar() {
   return (
@@ -30,20 +32,14 @@ function Sidebar() {
         <ul>
           {categories.map((item, i) => (
             <SideIconLink key={i} to={item.category} icon={item.icon}>
-              {item.category}
+              {firstCap(item.category)}
             </SideIconLink>
           ))}
         </ul>
       </SideHeader>
 
       <SideHeader type="list">
-        <em className="text-base">
-          This page is a cheap copy of{" "}
-          <a href={URL} className="text-lg text-yellow-400">
-            👉 rawg.io
-          </a>{" "}
-          for <span className="text-red-500">learning purpose</span> ;)
-        </em>
+        <Copy />
       </SideHeader>
     </aside>
   );
