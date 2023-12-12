@@ -23,12 +23,12 @@ function Sidebar() {
       </SideHeader>
 
       {/* all */}
-      <SideHeader type="header" to="games">
+      <SideHeader type="header" to="/games">
         All Games
       </SideHeader>
 
       {/* browse */}
-      <SideHeader type="browse" to="games/browse">
+      <SideHeader type="browse" to="/games/browse">
         <ul>
           {categories.map((item, i) => (
             <SideIconLink key={i} to={item.category} icon={item.icon}>

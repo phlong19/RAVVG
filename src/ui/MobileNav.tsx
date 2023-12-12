@@ -22,8 +22,8 @@ function MobileNav() {
 
         <ul className="space-y-3 px-3">
           <NavItem to="/" field="Home" type="header" />
-          <NavItem to="games" field="All Games" type="header" />
-          <NavItem to="games/browse" field="Browse" type="header" />
+          <NavItem to="/games" field="All Games" type="header" />
+          <NavItem to="/games/browse" field="Browse" type="header" />
 
           {categories.map((category, key) => (
             <NavItem

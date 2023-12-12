@@ -61,7 +61,7 @@ function DetailsBlock({
     );
   }
 
-  if (array) {
+  if (array && array.length > 0) {
     return (
       <div className={`mb-3 ${width > 50 ? "w-full" : "w-1/2"} pr-2 text-left`}>
         <div className="mb-2 text-left text-sm font-medium text-white/20">
@@ -83,7 +83,7 @@ function DetailsBlock({
                 </React.Fragment>
               );
             })}
-          {title !== "platforms" && array.length > 0 ? (
+          {title !== "platforms" &&
             (array as Other[]).map((el, i) => {
               return (
                 <React.Fragment key={i}>
@@ -98,13 +98,12 @@ function DetailsBlock({
                   {generateComma(array.length, i)}
                 </React.Fragment>
               );
-            })
-          ) : (
-            <span>There're no {title}</span>
-          )}
+            })}
         </div>
       </div>
     );
+  } else {
+    return <span>There're no {title}</span>;
   }
 }
 

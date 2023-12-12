@@ -11,7 +11,7 @@ function BreadCrumbs({ name }: { name: string }) {
           <span className="mx-1">/</span>
         </li>
         <li className="inline-block align-top text-[10px] leading-[18px] text-white/40">
-          <Link className=" hover:text-white" to="games">
+          <Link className=" hover:text-white" to="/games">
             games
           </Link>
           <span className="mx-1">/</span>

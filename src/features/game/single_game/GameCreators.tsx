@@ -38,9 +38,11 @@ function GameCreators({ title }: { title: string }) {
             >
               {/* inner wrapper with bg image */}
               <div
-                data-style={{
-                  "--image-url": `url(${c.image_background})`,
-                }}
+                style={
+                  {
+                    "--image-url": `url(${c.image_background})`,
+                  } as React.CSSProperties
+                }
                 className={`flex h-[354px] w-full flex-col justify-between overflow-hidden rounded-md bg-[rgb(32,32,32)]
                    bg-[image:linear-gradient(rgba(255,255,255,0.1),rgb(32,32,32)90%),var(--image-url)] bg-cover bg-[50%] bg-no-repeat px-6 py-8 shadow-md shadow-white/20 lg:h-[430px]`}
               >
@@ -49,7 +51,11 @@ function GameCreators({ title }: { title: string }) {
                   {c.image && (
                     <div className="flex items-center justify-center">
                       <div
-                        data-style={{ "--image-avt": `url(${c.image})` }}
+                        style={
+                          {
+                            "--image-avt": `url(${c.image})`,
+                          } as React.CSSProperties
+                        }
                         className="h-24 w-24 rounded-[50%] bg-transparent bg-[image:var(--image-avt)] bg-cover bg-[50%] bg-no-repeat"
                       ></div>
                     </div>
