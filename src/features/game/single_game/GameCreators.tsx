@@ -12,7 +12,13 @@ import Spinner from "../../../ui/Spinner";
 function GameCreators({ title }: { title: string }) {
   const { gameDevTeam, isLoading } = useGameDevTeam();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) {
+    return (
+      <div className="mt-8">
+        <Spinner />;
+      </div>
+    );
+  }
 
   return (
     <div className="relative mt-8">

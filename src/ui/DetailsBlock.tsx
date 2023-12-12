@@ -103,7 +103,16 @@ function DetailsBlock({
       </div>
     );
   } else {
-    return <span>There're no {title}</span>;
+    return (
+      <div className={`mb-3 ${width > 50 ? "w-full" : "w-1/2"} pr-2 text-left`}>
+        <div className="mb-2 text-left text-sm font-medium text-white/20">
+          {firstCap(title)}
+        </div>
+        <div className="break-words">
+          <span>There're no {title}</span>;
+        </div>
+      </div>
+    );
   }
 }
 

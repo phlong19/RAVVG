@@ -9,13 +9,13 @@ function MenuButtons() {
       <button aria-label="close" onClick={close}>
         <HiXMark />
       </button>
-      <Link to="login">
+      <Link to="/login" onClick={close}>
         <button aria-label="login">
           <HiArrowLeftOnRectangle />
         </button>
         <p className="text-center text-sm">Log in</p>
       </Link>
-      <Link to="signup">
+      <Link to="/signup" onClick={close}>
         <button aria-label="signup">
           <HiUserPlus />
         </button>

@@ -1,9 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
 
 import AppLayout from "./ui/AppLayout";
-import DiscoverLayout from "./ui/DiscoverLayout";
-import CategoryLayout from "./ui/CategoryLayout";
+import AuthenticationLayout from "./ui/AuthenticationLayout";
 
 import Home from "./pages/Home";
 import Discover from "./pages/Discover";
@@ -19,6 +19,7 @@ import NotFound from "./pages/NotFound";
 import { categories, newReleases } from "./utils/variables";
 import { MenuMobile } from "./context/MenuContext";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 import ScrollToTop from "./ui/ScrollToTop";
 
 const client = new QueryClient({
@@ -42,16 +43,14 @@ function App() {
               <Route index element={<Home />} />
 
               {/* new releases */}
-              <Route element={<DiscoverLayout />}>
-                <Route path="discover" element={<Navigate to="/" />} />
-                {newReleases.map((slug, key) => (
-                  <Route
-                    key={key}
-                    path={`discover/${slug.to}`}
-                    element={<Discover slug={slug.to} />}
-                  />
-                ))}
-              </Route>
+              <Route path="discover" element={<Navigate to="/" />} />
+              {newReleases.map((slug, key) => (
+                <Route
+                  key={key}
+                  path={`discover/${slug.to}`}
+                  element={<Discover slug={slug.to} />}
+                />
+              ))}
 
               {/* games */}
               <Route path="games" element={<AllGames />} />
@@ -60,16 +59,15 @@ function App() {
               <Route path="games/browse" element={<Categories />} />
 
               {/* categories */}
-              <Route element={<CategoryLayout />}>
-                {categories.map((category, key) => (
-                  <Route
-                    key={key}
-                    path={category.category} // path="platforms"
-                    element={<Category name={category.category} />}
-                  />
-                ))}
-              </Route>
-
+              {categories.map((category, key) => (
+                <Route
+                  key={key}
+                  path={category.category}
+                  element={<Category name={category.category} />}
+                />
+              ))}
+            </Route>
+            <Route element={<AuthenticationLayout />}>
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<Signup />} />
             </Route>
@@ -77,6 +75,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </MenuMobile>
+      <Toaster toastOptions={{ duration: 3000 }} />
     </QueryClientProvider>
   );
 }
