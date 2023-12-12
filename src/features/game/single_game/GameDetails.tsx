@@ -18,31 +18,36 @@ import GameAbout from "./GameAbout";
 
 function GameDetails() {
   const { name } = useParams();
-  const { game, gameDevTeam, gameSeries, screenshots, isLoading } =
-    useGameDetails();
+  const { game, isLoading } = useGameDetails();
 
-  if (isLoading) return <Spinner />;
-  if (!game || !gameDevTeam || !gameSeries || !screenshots)
-    return <ErrorFallBack />;
+  if (isLoading) {
+    return (
+      <div className="block px-2.5 sm:px-0 xl:m-auto xl:max-w-6xl">
+        <BreadCrumbs name={name!} />
+        <Spinner />
+      </div>
+    );
+  }
+  if (!game) return <ErrorFallBack />;
 
   return (
     <div className="block px-2.5 sm:px-0 xl:m-auto xl:max-w-6xl">
       <BreadCrumbs name={name!} />
       <GameHeading game={game} />
-      <GameScreenShots screenshots={screenshots} />
+      <GameScreenShots />
       <GameRatings game={game} />
 
-      <div>
+      <div className="mt-2 flex flex-col gap-2.5">
         <Button icon={<FaPlus />}>Write a review {game.reviews_count}</Button>
         <Button icon={<FaRegComment />}>Write a comment</Button>
       </div>
 
       <GameAbout description={game.description_raw} />
-      <GameInfomations game={game} gameSeries={gameSeries} />
+      <GameInfomations game={game} />
       <GameStores stores={game.stores} />
-      <GameCreators gameDevTeam={gameDevTeam} title={game.name} />
+      <GameCreators title={game.name} />
 
-      <div className="mb-3 mt-8 block text-right text-lg sm:text-center lg:hidden">
+      <div className="mb-3 mt-8 block text-center text-lg lg:hidden">
         <Copy />
       </div>
     </div>

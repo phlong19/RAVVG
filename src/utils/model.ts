@@ -4,7 +4,7 @@ export interface GameProps {
     background_image: string;
     slug: string;
     name: string;
-    released: string;
+    released: string | null;
     rating: number;
     ratings_count: number;
     ratings: {
@@ -56,6 +56,7 @@ export interface GameDetailsProps {
   background_image_additional: string;
   website: string;
   rating: number;
+  ratings_count: number;
   rating_top: number;
   ratings: {
     id: number;

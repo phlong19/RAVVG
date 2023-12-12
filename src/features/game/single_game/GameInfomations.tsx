@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom";
-import DetailsBlock, { Platform } from "../../../ui/DetailsBlock";
+import DetailsBlock, { Other, Platform } from "../../../ui/DetailsBlock";
 import { format } from "date-fns";
 import { GameDetailsProps } from "../../../utils/model";
+import { useGameSeries } from "./useGameSeries";
+import Spinner from "../../../ui/Spinner";
 
 interface Props {
   game: GameDetailsProps;
-  gameSeries: {
-    results: GameDetailsProps[];
-  };
 }
 
-function GameInfomations({ game, gameSeries }: Props) {
+function GameInfomations({ game }: Props) {
   const {
     platforms,
     genres,
@@ -22,6 +21,8 @@ function GameInfomations({ game, gameSeries }: Props) {
     website,
     released,
   } = game;
+
+  const { gameSeries, isLoading } = useGameSeries();
 
   return (
     <div className="mt-8 flex flex-wrap">
@@ -45,17 +46,25 @@ function GameInfomations({ game, gameSeries }: Props) {
       <DetailsBlock title="age rating" type="non-array">
         {esrb_rating !== null ? esrb_rating.name : "Not rated"}
       </DetailsBlock>
-      <DetailsBlock
-        width={100}
-        title="other games in the series"
-        array={gameSeries.results}
-      />
+      {isLoading ? (
+        <DetailsBlock type="non-array" title="other games in the series">
+          <Spinner />
+        </DetailsBlock>
+      ) : (
+        <DetailsBlock
+          width={100}
+          title="other games in the series"
+          array={gameSeries!.results as unknown as Other[]}
+        />
+      )}
       <DetailsBlock width={100} title="tags" array={tags} />
-      <DetailsBlock width={100} title="website" type="non-array">
-        <Link to={website} className="text-sm underline hover:text-white/40">
-          {website}
-        </Link>
-      </DetailsBlock>
+      {website && (
+        <DetailsBlock width={100} title="website" type="non-array">
+          <Link to={website} className="text-sm underline hover:text-white/40">
+            {website}
+          </Link>
+        </DetailsBlock>
+      )}
     </div>
   );
 }

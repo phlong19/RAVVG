@@ -6,30 +6,14 @@ import {
 } from "../../../utils/helpers";
 import { Link } from "react-router-dom";
 import React from "react";
-import { GameDetailsProps } from "../../../utils/model";
+import { useGameDevTeam } from "./useGameDevTeam";
+import Spinner from "../../../ui/Spinner";
 
-interface Props {
-  title: string;
-  gameDevTeam: {
-    count: number;
-    results: {
-      id: number;
-      name: string;
-      slug: string;
-      image: string;
-      image_background: string;
-      games_count: number;
-      games: GameDetailsProps[];
-      positions: {
-        id: number;
-        name: string;
-        slug: string;
-      }[];
-    }[];
-  };
-}
+function GameCreators({ title }: { title: string }) {
+  const { gameDevTeam, isLoading } = useGameDevTeam();
 
-function GameCreators({ title, gameDevTeam }: Props) {
+  if (isLoading) return <Spinner />;
+
   return (
     <div className="relative mt-8">
       {/* title */}
@@ -38,23 +22,23 @@ function GameCreators({ title, gameDevTeam }: Props) {
           {title} created by
         </h2>
         <div className="whitespace-nowrap text-xs text-white/40 underline lg:text-base">
-          {gameDevTeam.count} creators
+          {gameDevTeam!.count} creators
         </div>
       </div>
       {/* slider */}
-      <div className="ml-[-10px] mt-4 w-[calc(100%+20px)] overflow-auto pb-7">
-        <div className="mb-4 flex w-fit flex-nowrap items-start gap-2">
-          {gameDevTeam.results.map((c, i) => (
+      <div className="ml-[-10px] mt-4 w-[calc(100%+20px)] overflow-auto pb-7 lg:overflow-visible">
+        <div className="mb-4 flex w-fit flex-nowrap items-start gap-2 lg:flex-wrap lg:justify-around lg:gap-10">
+          {gameDevTeam!.results.map((c, i) => (
             // wrapper
             <div
               key={i}
-              className={`ml-2.5 w-[264px] lg:w-[304px] ${
-                i === gameDevTeam.count - 1 ? "mr-2.5" : ""
+              className={`ml-2.5 w-[264px] duration-300 hover:scale-110 lg:w-[304px] ${
+                i === gameDevTeam!.count - 1 ? "mr-2.5" : ""
               }`}
             >
               {/* inner wrapper with bg image */}
               <div
-                style={{
+                data-style={{
                   "--image-url": `url(${c.image_background})`,
                 }}
                 className={`flex h-[354px] w-full flex-col justify-between overflow-hidden rounded-md bg-[rgb(32,32,32)]
@@ -65,7 +49,7 @@ function GameCreators({ title, gameDevTeam }: Props) {
                   {c.image && (
                     <div className="flex items-center justify-center">
                       <div
-                        style={{ "--image-avt": `url(${c.image})` }}
+                        data-style={{ "--image-avt": `url(${c.image})` }}
                         className="h-24 w-24 rounded-[50%] bg-transparent bg-[image:var(--image-avt)] bg-cover bg-[50%] bg-no-repeat"
                       ></div>
                     </div>

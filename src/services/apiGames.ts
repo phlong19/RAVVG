@@ -6,7 +6,7 @@ interface Data {
   count: number;
   next: string;
   previous: string;
-  results: object[];
+  results: GameDetailsProps[];
 }
 
 type Date = {
@@ -14,7 +14,8 @@ type Date = {
   finalToday: string;
 };
 
-interface Creators extends Data {
+interface Creators {
+  count: number;
   results: {
     id: number;
     name: string;
@@ -31,7 +32,7 @@ interface Creators extends Data {
   }[];
 }
 
-export interface Screenshots extends Data {
+interface Screenshots {
   results: {
     id: number;
     image: string;
@@ -78,30 +79,58 @@ export async function getGameList(s?: string, page = 1) {
   }
 }
 
-export async function getGameDetails(slug: string) {
-  const base = `https://api.rawg.io/api/games/${slug}`;
-  const key = `?key=${KEY}`;
+const base = "https://api.rawg.io/api/games/";
+const key = `?key=${KEY}`;
 
-  const gameDetails = base + key;
-  const shots = base + "/screenshots" + key;
-  const series = base + "/game-series" + key;
-  const devTeam = base + "/development-team" + key;
+export async function getGameDetails(slug: string) {
+  const gameDetails = base + slug + key;
 
   try {
-    const [promise1, promise2, promise3, promise4] = await Promise.all([
-      fetch(gameDetails),
-      fetch(shots),
-      fetch(series),
-      fetch(devTeam),
-    ]);
+    const res = await fetch(gameDetails);
+    const game = await res.json();
+    //
+    return game;
+    //
+  } catch (error) {
+    console.error(error);
+    throw new Error("There was an error while fetching");
+  }
+}
 
-    const game: GameDetailsProps = await promise1.json();
-    const screenshots: Screenshots = await promise2.json();
-    const gameSeries: GameSeries = await promise3.json();
-    const gameDevTeam: Creators = await promise4.json();
+export async function getGameSeries(slug: string) {
+  const series = base + slug + "/game-series" + key;
+  try {
+    const res = await fetch(series);
+    const gameSeries: GameSeries = await res.json();
     //
-    return { game, screenshots, gameSeries, gameDevTeam };
+    return gameSeries;
     //
+  } catch (error) {
+    console.error(error);
+    throw new Error("There was an error while fetching");
+  }
+}
+
+export async function getScreenShots(slug: string) {
+  const shots = base + slug + "/screenshots" + key;
+  try {
+    const res = await fetch(shots);
+    const screenshots: Screenshots = await res.json();
+
+    return screenshots;
+  } catch (error) {
+    console.error(error);
+    throw new Error("There was an error while fetching");
+  }
+}
+
+export async function getDevTeam(slug: string) {
+  const devTeam = base + slug + "/development-team" + key;
+  try {
+    const res = await fetch(devTeam);
+    const gameDevTeam: Creators = await res.json();
+
+    return gameDevTeam;
   } catch (error) {
     console.error(error);
     throw new Error("There was an error while fetching");

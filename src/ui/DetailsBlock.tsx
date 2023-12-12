@@ -19,7 +19,7 @@ export interface Platform {
   };
 }
 
-interface Other {
+export interface Other {
   id: number;
   name: string;
   slug: string;
@@ -74,7 +74,7 @@ function DetailsBlock({
                 <React.Fragment key={i}>
                   <Link
                     key={i}
-                    className="text-sm underline hover:text-white/40 lg:text-base"
+                    className="text-sm underline duration-200 hover:text-white/60 lg:text-base"
                     to={`/games/${p.platform.slug}`}
                   >
                     {p.platform.name}
@@ -83,12 +83,12 @@ function DetailsBlock({
                 </React.Fragment>
               );
             })}
-          {title !== "platforms" &&
+          {title !== "platforms" && array.length > 0 ? (
             (array as Other[]).map((el, i) => {
               return (
                 <React.Fragment key={i}>
                   <Link
-                    className="text-sm underline hover:text-white/40 lg:text-base"
+                    className="text-sm underline duration-200 hover:text-white/60 lg:text-base"
                     to={`/${
                       title === "other games in the series" ? "game" : "games"
                     }/${el.slug}`}
@@ -98,7 +98,10 @@ function DetailsBlock({
                   {generateComma(array.length, i)}
                 </React.Fragment>
               );
-            })}
+            })
+          ) : (
+            <span>There're no {title}</span>
+          )}
         </div>
       </div>
     );

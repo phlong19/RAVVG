@@ -2,7 +2,7 @@ import { URL } from "../utils/variables";
 
 function Copy() {
   return (
-    <em>
+    <em className="text-sm">
       This page is a cheap copy of{" "}
       <a href={URL} className="text-yellow-400">
         👉 rawg.io

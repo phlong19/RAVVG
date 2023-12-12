@@ -7,10 +7,6 @@ type Slug = string | undefined;
 
 export function useGamesList() {
   const queryClient = useQueryClient();
-
-  // home = / => ['','']
-  // all games = /games => ['','games']
-  // discover = /discover/last-30-days => ['', 'discover', 'last-30-days']
   let slug: Slug = undefined;
   const pathname = window.location.pathname;
 

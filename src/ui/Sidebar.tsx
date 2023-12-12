@@ -1,9 +1,9 @@
 import SideHeader from "./SideHeader";
-
 import SideIconLink from "./SideIconLink";
-import { URL, categories, newReleases } from "../utils/variables";
-import { firstCap } from "../utils/helpers";
 import Copy from "./Copy";
+
+import { categories, newReleases } from "../utils/variables";
+import { firstCap } from "../utils/helpers";
 
 function Sidebar() {
   return (

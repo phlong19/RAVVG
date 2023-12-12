@@ -9,7 +9,7 @@ function CardInfoHidden({ game }: GameProps) {
     <ul className="invisible mt-2 h-0 w-full list-none pt-1 text-base group-hover/item:visible group-hover/item:h-[115px]">
       <li className="flex items-baseline justify-between border-b border-white/[0.07] py-3 text-xs">
         <div className="mr-[6px] text-white/40">Release date:</div>
-        <div>{format(new Date(game.released), "MMM dd, yyyy")}</div>
+        <div>{format(new Date(game.released!), "MMM dd, yyyy")}</div>
       </li>
       <li className="flex items-baseline justify-between border-b border-white/[0.07] py-3 text-xs">
         <div className="mr-[6px] text-white/40">Ratings:</div>
