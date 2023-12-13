@@ -6,13 +6,15 @@ import MobileNav from "./MobileNav";
 function AuthenticationLayout() {
   return (
     <AppContainer>
-      <Header />
-      <div className="lg:hidden">
-        <MobileNav />
+      <div className="min-h-screen w-full bg-opacity-60 bg-[image:linear-gradient(to_left,rgba(0,0,0,0.6),#313131),var(--image-random)] bg-cover bg-center bg-no-repeat">
+        <Header />
+        <div className="lg:hidden">
+          <MobileNav />
+        </div>
+        <main>
+          <Outlet />
+        </main>
       </div>
-      <main>
-        <Outlet />
-      </main>
     </AppContainer>
   );
 }
