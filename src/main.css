@@ -4,6 +4,7 @@
 
 :root {
   --image-random: url("https://picsum.photos/1920/1080");
+  --error-img: url("new-quantum-error.jpg");
 }
 
 .body {
@@ -26,6 +27,7 @@
     @apply mr-1 flex min-h-[25px] min-w-[35px] appearance-none items-center justify-center rounded-[4px] bg-white/10 pl-2 text-xs font-normal text-white transition-all duration-300 hover:bg-white hover:text-black;
   }
 }
+
 @layer utilities {
   @variants responsive {
     /* Hide scrollbar for Chrome, Safari and Opera */
@@ -81,6 +83,21 @@
   }
   100% {
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
+}
+
+/* skeleton loading */
+
+.skeleton {
+  animation: skeleton-loading 1s infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 6%, 15%);
+  }
+  100% {
+    background-color: hsl(200, 2%, 40%);
   }
 }
 

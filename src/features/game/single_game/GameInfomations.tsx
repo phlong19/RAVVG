@@ -60,7 +60,10 @@ function GameInfomations({ game }: Props) {
       <DetailsBlock width={100} title="tags" array={tags} />
       {website && (
         <DetailsBlock width={100} title="website" type="non-array">
-          <Link to={website} className="text-sm underline hover:text-white/40">
+          <Link
+            to={website}
+            className="text-sm underline hover:text-white/40 lg:text-base"
+          >
             {website}
           </Link>
         </DetailsBlock>

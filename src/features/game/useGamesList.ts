@@ -18,11 +18,7 @@ export function useGamesList() {
   const [searchParams] = useSearchParams();
   const page = searchParams.get("page") ? Number(searchParams.get("page")) : 1;
 
-  const {
-    data: { results, count } = {},
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: { results, count } = {}, isLoading } = useQuery({
     queryKey: ["games", slug, page],
     queryFn: () => getGameList(slug, page),
   });
@@ -44,5 +40,5 @@ export function useGamesList() {
     });
   }
 
-  return { results, count, isLoading, error };
+  return { results, count, isLoading };
 }

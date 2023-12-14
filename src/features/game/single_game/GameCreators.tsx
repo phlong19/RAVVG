@@ -7,15 +7,15 @@ import {
 import { Link } from "react-router-dom";
 import React from "react";
 import { useGameDevTeam } from "./useGameDevTeam";
-import Spinner from "../../../ui/Spinner";
+import SkeletonCardsLoading from "../../../ui/SkeletonCardsLoading";
 
 function GameCreators({ title }: { title: string }) {
   const { gameDevTeam, isLoading } = useGameDevTeam();
 
   if (isLoading) {
     return (
-      <div className="mt-8">
-        <Spinner />;
+      <div className="mt-8 h-auto overflow-auto">
+        <SkeletonCardsLoading />
       </div>
     );
   }

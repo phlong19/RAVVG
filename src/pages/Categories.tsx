@@ -1,9 +1,12 @@
+import CategoriesList from "../features/game/categories/CategoriesList";
+import MainLayout from "../ui/MainLayout";
+
 function Categories() {
-    return (
-        <div>
-            browse
-        </div>
-    )
+  return (
+    <MainLayout title="Browse">
+      <CategoriesList />
+    </MainLayout>
+  );
 }
 
-export default Categories
+export default Categories;

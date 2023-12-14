@@ -1,14 +1,15 @@
-import ErrorFallBack from "../../ui/ErrorFallBack";
 import GameCard from "./GameCard";
 import Pagination from "../../ui/Pagination";
 import Spinner from "../../ui/Spinner";
+
 import { useGamesList } from "./useGamesList";
+import EmptyPage from "../../ui/EmptyPage";
 
 function GamesList() {
-  const { results, count, isLoading, error } = useGamesList();
+  const { results, count, isLoading } = useGamesList();
 
   if (isLoading) return <Spinner />;
-  if (error) return <ErrorFallBack />;
+  if (!results!.length) return <EmptyPage />;
 
   return (
     <>

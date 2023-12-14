@@ -5,7 +5,13 @@ import { useGameScreenshots } from "./useGameScreenshots";
 function GameScreenShots() {
   const { screenshots, isLoading } = useGameScreenshots();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) {
+    return (
+      <div className="flex min-h-[11rem] items-center justify-center lg:min-h-[600px]">
+        <Spinner />
+      </div>
+    );
+  }
 
   return (
     <>

@@ -60,7 +60,7 @@ function GameRatings({ game }: Props) {
           <div className="absolute h-full w-full rounded-md  outline outline-stone-900"></div>
         </div>
         {/* legend */}
-        <div className="mt-4 flex flex-wrap gap-0 px-2.5 xl:gap-2">
+        <div className="mt-4 flex flex-wrap gap-1 px-2.5 xl:gap-2">
           {sortedRatings.map((rate, i) => (
             <div
               key={i}

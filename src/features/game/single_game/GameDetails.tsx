@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import BreadCrumbs from "../../../ui/BreadCrumbs";
 import Button from "../../../ui/Button";
 import Spinner from "../../../ui/Spinner";
-import ErrorFallBack from "../../../ui/ErrorFallBack";
 import { FaPlus, FaRegComment } from "react-icons/fa";
 
 import { useGameDetails } from "./useGameDetails";
@@ -28,7 +27,6 @@ function GameDetails() {
       </div>
     );
   }
-  if (!game) return <ErrorFallBack />;
 
   return (
     <div className="block px-2.5 sm:px-0 xl:m-auto xl:max-w-6xl">
