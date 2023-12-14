@@ -21,7 +21,7 @@ function GameDetails() {
 
   if (isLoading) {
     return (
-      <div className="block px-2.5 sm:px-0 xl:m-auto xl:max-w-6xl">
+      <div className="block px-2.5 sm:px-0 xl:m-auto">
         <BreadCrumbs name={name!} />
         <Spinner />
       </div>
@@ -29,7 +29,7 @@ function GameDetails() {
   }
 
   return (
-    <div className="block px-2.5 sm:px-0 xl:m-auto xl:max-w-6xl">
+    <div className="block px-2.5 sm:px-0 xl:m-auto">
       <BreadCrumbs name={name!} />
       <GameHeading game={game} />
       <GameScreenShots />

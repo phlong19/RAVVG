@@ -53,7 +53,7 @@ function App() {
 
               {/* games */}
               <Route path="games" element={<AllGames />} />
-              <Route path="games/:category" element={<GameCategory />} />
+              <Route path="games/:category/:slug" element={<GameCategory />} />
               <Route path="game/:name" element={<Game />} />
               <Route path="games/browse" element={<Categories />} />
 
@@ -62,7 +62,7 @@ function App() {
                 <Route
                   key={key}
                   path={category.category}
-                  element={<Category name={category.category} />}
+                  element={<Category />}
                 />
               ))}
             </Route>

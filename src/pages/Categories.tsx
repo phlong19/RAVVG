@@ -1,4 +1,4 @@
-import CategoriesList from "../features/game/categories/CategoriesList";
+import CategoriesList from "../features/categories/CategoriesList";
 import MainLayout from "../ui/MainLayout";
 
 function Categories() {

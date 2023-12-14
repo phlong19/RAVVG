@@ -1,16 +1,14 @@
 import GameCard from "./GameCard";
 import Pagination from "../../ui/Pagination";
-import Spinner from "../../ui/Spinner";
+import { GameDetailsProps } from "../../utils/model";
 
-import { useGamesList } from "./useGamesList";
-import EmptyPage from "../../ui/EmptyPage";
+interface Props {
+  results: GameDetailsProps[];
+  count: number;
+  isLoading: boolean;
+}
 
-function GamesList() {
-  const { results, count, isLoading } = useGamesList();
-
-  if (isLoading) return <Spinner />;
-  if (!results!.length) return <EmptyPage />;
-
+function GamesList({ results, count }: Props) {
   return (
     <>
       <div className="flex flex-col lg:block lg:columns-3 lg:gap-x-6 2xl:columns-4">

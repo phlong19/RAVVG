@@ -1,9 +1,14 @@
-interface Props {
-  name: string;
-}
+import CategoryList from "../features/category/CategoryList";
+import MainLayout from "../ui/MainLayout";
+import { firstCap } from "../utils/helpers";
 
-function Category({ name }: Props) {
-  return <div>category: {name}</div>;
+function Category() {
+  const title = window.location.pathname.replace("/", "");
+  return (
+    <MainLayout title={firstCap(title)}>
+      <CategoryList type={title} />
+    </MainLayout>
+  );
 }
 
 export default Category;

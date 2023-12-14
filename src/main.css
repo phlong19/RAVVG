@@ -4,7 +4,7 @@
 
 :root {
   --image-random: url("https://picsum.photos/1920/1080");
-  --error-img: url("new-quantum-error.jpg");
+  --error-img: url("/new-quantum-error.jpg");
 }
 
 .body {
@@ -25,6 +25,10 @@
 @layer components {
   .game-info-btn {
     @apply mr-1 flex min-h-[25px] min-w-[35px] appearance-none items-center justify-center rounded-[4px] bg-white/10 pl-2 text-xs font-normal text-white transition-all duration-300 hover:bg-white hover:text-black;
+  }
+
+  .card {
+    @apply w-full justify-between flex flex-col rounded-md bg-[rgb(32,32,32)] overflow-hidden bg-cover bg-[50%] bg-no-repeat px-6 py-8 shadow-md shadow-white/20
   }
 }
 

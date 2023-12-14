@@ -1,13 +1,9 @@
-import { FaRegUser } from "react-icons/fa";
-import {
-  firstCap,
-  generateComma,
-  numberWithCommas,
-} from "../../../utils/helpers";
-import { Link } from "react-router-dom";
 import React from "react";
+import { firstCap, generateComma } from "../../../utils/helpers";
 import { useGameDevTeam } from "./useGameDevTeam";
+
 import SkeletonCardsLoading from "../../../ui/SkeletonCardsLoading";
+import CardItemsList from "../../../ui/CardItemsList";
 
 function GameCreators({ title }: { title: string }) {
   const { gameDevTeam, isLoading } = useGameDevTeam();
@@ -49,8 +45,7 @@ function GameCreators({ title }: { title: string }) {
                     "--image-url": `url(${c.image_background})`,
                   } as React.CSSProperties
                 }
-                className={`flex h-[354px] w-full flex-col justify-between overflow-hidden rounded-md bg-[rgb(32,32,32)]
-                   bg-[image:linear-gradient(rgba(255,255,255,0.1),rgb(32,32,32)90%),var(--image-url)] bg-cover bg-[50%] bg-no-repeat px-6 py-8 shadow-md shadow-white/20 lg:h-[430px]`}
+                className={`card h-[354px] bg-[image:linear-gradient(rgba(255,255,255,0.1),rgb(32,32,32)90%),var(--image-url)] lg:h-[430px]`}
               >
                 <div className="shrink grow basis-auto">
                   {/* avatar */}
@@ -85,37 +80,7 @@ function GameCreators({ title }: { title: string }) {
                   </div>
                 </div>
                 {/* game lists */}
-                <div className="w-full">
-                  {/* games count */}
-                  <div className="flex text-sm">
-                    <span className="mr-2 font-bold">Known for</span>
-                    <span className="ml-auto whitespace-nowrap text-white/40 ">
-                      {c.games_count}
-                    </span>
-                  </div>
-                  {/* list */}
-                  <ul className="mt-2 min-h-[68px] w-full border-t border-solid border-white/10 pt-2">
-                    {[...c.games].slice(0, 3).map((game) => (
-                      <li
-                        key={game.id}
-                        className="mb-1.5 flex w-full justify-between text-sm"
-                      >
-                        <Link
-                          to={`/game/${game.slug}`}
-                          className="max-w-[80%] overflow-hidden text-ellipsis whitespace-nowrap text-left underline"
-                        >
-                          {game.name}
-                        </Link>
-                        <span className="flex min-w-[56px] items-center justify-center gap-1 text-right opacity-40">
-                          {numberWithCommas(game.added)}
-                          <span className="text-xs">
-                            <FaRegUser />
-                          </span>
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <CardItemsList list={c} title="Known for"/>
               </div>
             </div>
           ))}
