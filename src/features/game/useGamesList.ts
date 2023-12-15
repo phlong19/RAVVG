@@ -2,24 +2,18 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getGameList } from "../../services/apiGames";
 import { useSearchParams } from "react-router-dom";
 import { ITEM_PER_PAGE } from "../../utils/variables";
+import { Order } from "../../utils/model";
 
-type Slug = string | undefined;
-
-export function useGamesList() {
+export function useGamesList(slug: string | null, order: Order) {
   const queryClient = useQueryClient();
-  let slug: Slug = undefined;
-  const pathname = window.location.pathname;
-
-  if (pathname.includes("discover")) {
-    slug = pathname.split("/").pop()!;
-  }
-  if (pathname === "/") slug = "home";
-
   const [searchParams] = useSearchParams();
+
   const page = searchParams.get("page") ? Number(searchParams.get("page")) : 1;
 
+  // const order=searchParams.get('')
+
   const { data: { results, count } = {}, isLoading } = useQuery({
-    queryKey: ["games", slug, page],
+    queryKey: ["games", slug, page, order],
     queryFn: () => getGameList(slug, page),
   });
 

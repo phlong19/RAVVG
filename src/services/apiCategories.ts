@@ -1,6 +1,7 @@
-import { GameDetailsProps } from "../utils/model";
+import { GameDetailsProps, GamesData } from "../utils/model";
 import { KEY } from "../utils/variables";
 
+// data of platforms,... anything except games
 interface Data {
   count: number;
   results: {
@@ -22,13 +23,6 @@ interface CategoryDescription {
   image_background: string;
   description: string;
   image: null | string;
-}
-
-interface Games {
-  count: number;
-  next: string;
-  previous: string;
-  results: GameDetailsProps[];
 }
 
 const base = "https://api.rawg.io/api/";
@@ -55,7 +49,7 @@ export async function getGamesByCategory(category: string, slug: string) {
     // pass in the id for next query
     const query = base + `games?${category}=${dataDes.id}&key=${KEY}`;
     const res = await fetch(query);
-    const dataGames: Games = await res.json();
+    const dataGames: GamesData = await res.json();
 
     return { dataDes, dataGames };
   } catch (error) {

@@ -5,10 +5,10 @@ import { getGameDetails } from "../../../services/apiGames";
 export function useGameDetails() {
   const { name } = useParams();
 
-  const { data: game = {}, isLoading } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: [`${name}`, "game"],
     queryFn: () => getGameDetails(name!),
   });
 
-  return { game, isLoading };
+  return { data, isLoading };
 }

@@ -3,15 +3,10 @@ import {
   FaRegArrowAltCircleLeft,
   FaRegArrowAltCircleRight,
 } from "react-icons/fa";
+import { Screenshot } from "../utils/model";
 
 interface Props {
-  images: {
-    id: number;
-    image: string;
-    width: number;
-    height: number;
-    is_deleted: boolean;
-  }[];
+  images: Screenshot[];
 }
 
 function Carousel({ images }: Props) {

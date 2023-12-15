@@ -24,7 +24,7 @@
 
 @layer components {
   .game-info-btn {
-    @apply mr-1 flex min-h-[25px] min-w-[35px] appearance-none items-center justify-center rounded-[4px] bg-white/10 pl-2 text-xs font-normal text-white transition-all duration-300 hover:bg-white hover:text-black;
+    @apply mx-1 flex min-h-[25px] min-w-[35px] appearance-none items-center justify-center rounded-[4px] bg-white/10 pl-2 text-xs font-normal text-white transition-all duration-300 hover:bg-white hover:text-black;
   }
 
   .card {

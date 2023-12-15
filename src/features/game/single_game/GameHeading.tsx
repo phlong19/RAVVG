@@ -1,15 +1,11 @@
 import { format } from "date-fns";
 import DynamicFaIcon from "../../../ui/DynamicFaIcon";
 import { firstCap } from "../../../utils/helpers";
-import { GameDetailsProps } from "../../../utils/model";
+import { GameDetails } from "../../../utils/model";
 
-interface Props {
-  game: GameDetailsProps;
-}
-
-function GameHeading({ game }: Props) {
+function GameHeading({ game }: { game: GameDetails }) {
   const { released, parent_platforms, playtime, name } = game;
-  
+
   return (
     <div className="relative flex min-h-[auto] flex-col items-center justify-center lg:min-h-[100px]">
       <div className="flex flex-col flex-wrap items-center justify-center text-center text-xs font-normal uppercase leading-normal lg:mr-auto lg:flex-row">

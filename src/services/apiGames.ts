@@ -1,13 +1,11 @@
 import { KEY, baseGameURL } from "../utils/variables";
 import { getStartDate } from "../utils/helpers";
-import { GameDetailsProps } from "../utils/model";
-
-interface Data {
-  count: number;
-  next: string;
-  previous: string;
-  results: GameDetailsProps[];
-}
+import {
+  GameDetails,
+  GameDetailsProps,
+  GamesData,
+  Order,
+} from "../utils/model";
 
 type Date = {
   finalStartDate: string;
@@ -33,20 +31,14 @@ interface Creators {
 }
 
 interface Screenshots {
-  results: {
-    id: number;
-    image: string;
-    width: number;
-    height: number;
-    is_deleted: boolean;
-  }[];
+  results: Screenshots[];
 }
 
-interface GameSeries {
-  results: GameDetailsProps[];
-}
-
-export async function getGameList(s?: string, page = 1) {
+export async function getGameList(
+  s: string | null,
+  page = 1,
+  order: Order = "popular",
+) {
   let query = baseGameURL;
   let date: Date = {
     finalStartDate: "none",
@@ -64,12 +56,12 @@ export async function getGameList(s?: string, page = 1) {
       query +
       `dates=${date.finalStartDate},${date.finalToday}&ordering=-added&page=${page}`;
 
-    if (s === undefined) {
+    if (s === null) {
       query = baseGameURL + `page=${page}`;
     }
 
     const res = await fetch(query);
-    const data: Data = await res.json();
+    const data: GamesData = await res.json();
     //
     return data;
     //
@@ -87,7 +79,7 @@ export async function getGameDetails(slug: string) {
 
   try {
     const res = await fetch(gameDetails);
-    const game = await res.json();
+    const game: GameDetails = await res.json();
     //
     return game;
     //
@@ -101,7 +93,7 @@ export async function getGameSeries(slug: string) {
   const series = base + slug + "/game-series" + key;
   try {
     const res = await fetch(series);
-    const gameSeries: GameSeries = await res.json();
+    const gameSeries: GamesData = await res.json();
     //
     return gameSeries;
     //

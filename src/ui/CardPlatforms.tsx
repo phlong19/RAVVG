@@ -1,8 +1,8 @@
 import { firstCap } from "../utils/helpers";
-import { GameProps } from "../utils/model";
+import { GameDetailsProps } from "../utils/model";
 import DynamicFaIcon from "./DynamicFaIcon";
 
-function CardPlatforms({ game }: GameProps) {
+function CardPlatforms({ game }: { game: GameDetailsProps }) {
   return (
     <div className="mb-2 flex">
       <div className="mr-[6px] flex flex-1 justify-start gap-1">

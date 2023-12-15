@@ -1,10 +1,10 @@
 import React from "react";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-import { GameProps } from "../utils/model";
+import { GameDetailsProps } from "../utils/model";
 import { generateComma } from "../utils/helpers";
 
-function CardInfoHidden({ game }: GameProps) {
+function CardInfoHidden({ game }: { game: GameDetailsProps }) {
   return (
     <ul className="invisible mt-2 h-0 w-full list-none pt-1 text-base group-hover/item:visible group-hover/item:h-[115px]">
       <li className="flex items-baseline justify-between border-b border-white/[0.07] py-3 text-xs">

@@ -5,7 +5,6 @@ import { GameDetailsProps } from "../../utils/model";
 interface Props {
   results: GameDetailsProps[];
   count: number;
-  isLoading: boolean;
 }
 
 function GamesList({ results, count }: Props) {

@@ -7,7 +7,7 @@ import SkeletonCardsLoading from "../ui/SkeletonCardsLoading";
 const title = "All Games";
 
 function AllGames() {
-  const { results, count, isLoading } = useGamesList();
+  const { results, count, isLoading } = useGamesList(null);
 
   if (isLoading) {
     return (
@@ -23,7 +23,7 @@ function AllGames() {
   return (
     <MainLayout title={title}>
       <ControlList />
-      <GamesList results={results!} count={count!} isLoading={isLoading} />
+      <GamesList results={results!} count={count!} />
     </MainLayout>
   );
 }

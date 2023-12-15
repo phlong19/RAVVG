@@ -1,21 +1,7 @@
 import DynamicSiIcon from "../../../ui/DynamicSiIcon";
+import { Store } from "../../../utils/model";
 
-interface Props {
-  stores: {
-    id: number;
-    url: string;
-    store: {
-      id: number;
-      name: string;
-      slug: string;
-      domain: string;
-      games_count: number;
-      image_background: string;
-    };
-  }[];
-}
-
-function GameStores({ stores }: Props) {
+function GameStores({ stores }: { stores: Store[] }) {
   return (
     <div className="mt-6 w-full overflow-x-auto lg:mt-8 lg:overflow-visible">
       <h2 className="text-lg text-white/40">Available on</h2>

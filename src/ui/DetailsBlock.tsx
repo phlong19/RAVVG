@@ -1,31 +1,7 @@
 import { Link } from "react-router-dom";
 import { firstCap, generateComma } from "../utils/helpers";
 import React from "react";
-
-export interface Platform {
-  platform: {
-    id: number;
-    name: string;
-    slug: string;
-    image: null;
-    year_end: null;
-    year_start: number;
-    games_count: number;
-    image_background: string;
-  };
-  released_at: null;
-  requirements: {
-    minimum?: undefined;
-  };
-}
-
-export interface Other {
-  id: number;
-  name: string;
-  slug: string;
-  games_count: number;
-  image_background: string;
-}
+import { Genre, PlatformDetail } from "../utils/model";
 
 function DetailsBlock({
   width = 50,
@@ -48,7 +24,7 @@ function DetailsBlock({
     | "other games in the series"
     | "tags"
     | "website";
-  array?: Platform[] | Other[];
+  array?: PlatformDetail[] | Genre[];
 }) {
   if (type) {
     return (
@@ -69,7 +45,7 @@ function DetailsBlock({
         </div>
         <div className="break-words">
           {title === "platforms" &&
-            (array as Platform[]).map((p, i) => {
+            (array as PlatformDetail[]).map((p, i) => {
               return (
                 <React.Fragment key={i}>
                   <Link
@@ -84,7 +60,7 @@ function DetailsBlock({
               );
             })}
           {title !== "platforms" &&
-            (array as Other[]).map((el, i) => {
+            (array as Genre[]).map((el, i) => {
               return (
                 <React.Fragment key={i}>
                   <Link

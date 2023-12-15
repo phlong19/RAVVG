@@ -17,7 +17,7 @@ import GameAbout from "./GameAbout";
 
 function GameDetails() {
   const { name } = useParams();
-  const { game, isLoading } = useGameDetails();
+  const { data, isLoading } = useGameDetails();
 
   if (isLoading) {
     return (
@@ -27,6 +27,8 @@ function GameDetails() {
       </div>
     );
   }
+
+  const game = data!;
 
   return (
     <div className="block px-2.5 sm:px-0 xl:m-auto">

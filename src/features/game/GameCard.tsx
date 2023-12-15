@@ -1,4 +1,4 @@
-import { GameProps } from "../../utils/model";
+import { GameDetailsProps } from "../../utils/model";
 
 import CardImage from "../../ui/CardImage";
 import CardPlatforms from "../../ui/CardPlatforms";
@@ -7,7 +7,7 @@ import CardInfoHidden from "../../ui/CardInfoHidden";
 import CardTitle from "../../ui/CardTitle";
 import { mostRating } from "../../utils/helpers";
 
-function GameCard({ game }: GameProps) {
+function GameCard({ game }: { game: GameDetailsProps }) {
   const icon = mostRating(game.ratings);
 
   return (

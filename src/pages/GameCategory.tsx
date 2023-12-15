@@ -33,7 +33,7 @@ function GameCategory() {
       desType="raw"
     >
       <ControlList />
-      <GamesList results={results!} count={count!} isLoading={isLoading} />
+      <GamesList results={results!} count={count!} />
     </MainLayout>
   );
 }

@@ -8,7 +8,7 @@ const title = "New and trending";
 const description = "Based on player counts and release date";
 
 function Home() {
-  const { results, count, isLoading } = useGamesList();
+  const { results, count, isLoading } = useGamesList("home");
 
   if (isLoading) {
     return (
@@ -24,7 +24,7 @@ function Home() {
   return (
     <MainLayout title={title} description={description}>
       <ControlList />
-      <GamesList results={results!} count={count!} isLoading={isLoading} />
+      <GamesList results={results!} count={count!} />
     </MainLayout>
   );
 }

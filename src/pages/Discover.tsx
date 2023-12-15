@@ -7,8 +7,8 @@ import { firstCapMoveDash } from "../utils/helpers";
 
 function Discover({ slug }: { slug: string }) {
   const title = firstCapMoveDash(slug);
-  const { results, count, isLoading } = useGamesList();
-  
+  const { results, count, isLoading } = useGamesList(slug);
+
   if (isLoading) {
     return (
       <MainLayout title={title}>
@@ -23,7 +23,7 @@ function Discover({ slug }: { slug: string }) {
   return (
     <MainLayout title={title}>
       <ControlList />
-      <GamesList results={results!} count={count!} isLoading={isLoading} />
+      <GamesList results={results!} count={count!} />
     </MainLayout>
   );
 }

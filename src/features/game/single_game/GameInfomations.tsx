@@ -1,15 +1,11 @@
 import { Link } from "react-router-dom";
-import DetailsBlock, { Other, Platform } from "../../../ui/DetailsBlock";
+import DetailsBlock from "../../../ui/DetailsBlock";
 import { format } from "date-fns";
-import { GameDetailsProps } from "../../../utils/model";
+import { GameDetails, Genre } from "../../../utils/model";
 import { useGameSeries } from "./useGameSeries";
 import Spinner from "../../../ui/Spinner";
 
-interface Props {
-  game: GameDetailsProps;
-}
-
-function GameInfomations({ game }: Props) {
+function GameInfomations({ game }: { game: GameDetails }) {
   const {
     platforms,
     genres,
@@ -26,7 +22,7 @@ function GameInfomations({ game }: Props) {
 
   return (
     <div className="mt-8 flex flex-wrap">
-      <DetailsBlock title="platforms" array={platforms as Platform[]} />
+      <DetailsBlock title="platforms" array={platforms} />
 
       {game.metacritic && (
         <DetailsBlock title="metascore" type="non-array">
@@ -54,7 +50,7 @@ function GameInfomations({ game }: Props) {
         <DetailsBlock
           width={100}
           title="other games in the series"
-          array={gameSeries!.results as unknown as Other[]}
+          array={gameSeries!.results as unknown as Genre[]}
         />
       )}
       <DetailsBlock width={100} title="tags" array={tags} />

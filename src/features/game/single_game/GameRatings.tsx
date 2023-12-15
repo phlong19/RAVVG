@@ -6,13 +6,9 @@ import {
   sortRatingsById,
 } from "../../../utils/helpers";
 import { FaRegEdit } from "react-icons/fa";
-import { GameDetailsProps } from "../../../utils/model";
+import { GameDetails } from "../../../utils/model";
 
-interface Props {
-  game: GameDetailsProps;
-}
-
-function GameRatings({ game }: Props) {
+function GameRatings({ game }: { game: GameDetails }) {
   const { updated, reviews_count } = game;
   const icon = mostRating(game.ratings);
   const sortedRatings = sortRatingsById(game.ratings);
