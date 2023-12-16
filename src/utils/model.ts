@@ -1,5 +1,10 @@
 export type Order = "popular" | "updated" | "released" | "name" | "rating";
 
+export interface Option {
+  label: string;
+  value: string;
+}
+
 export interface Screenshot {
   id: number;
   image: string;

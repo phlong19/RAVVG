@@ -12,10 +12,12 @@ function GameCard({ game }: { game: GameDetailsProps }) {
 
   return (
     <div className="group/item mb-4 max-w-full break-inside-avoid px-2 duration-300 hover:scale-[1.05] md:px-0 lg:mb-6">
-      <CardImage background_image={game.background_image} />
+      {game.background_image && (
+        <CardImage background_image={game.background_image} />
+      )}
 
       <div className="rounded-b-xl bg-[#202020] p-4 lg:px-4 lg:pb-6 lg:pt-4">
-        <CardPlatforms game={game} />
+        {game.platforms && <CardPlatforms game={game} />}
         <CardTitle icon={icon} name={game.name} slug={game.slug} />
         <CardButtons
           added={game.added}

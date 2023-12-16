@@ -32,7 +32,7 @@ function GameCategory() {
       description={description}
       desType="raw"
     >
-      <ControlList />
+      <ControlList root={`games/${category}/${slug}`} />
       <GamesList results={results!} count={count!} />
     </MainLayout>
   );

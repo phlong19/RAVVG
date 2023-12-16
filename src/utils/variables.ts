@@ -41,3 +41,24 @@ export { URL, apiURL, getAPI, sitemap };
 
 // BASE URL
 export const baseGameURL = `https://api.rawg.io/api/games?key=${KEY}&page_size=${ITEM_PER_PAGE}&`;
+
+export const orderOptions = [
+  { label: "Date updated", value: "last-updated" },
+  { label: "Metacritic", value: "metacritic" },
+  { label: "Release date", value: "released-date" },
+  { label: "Popularity", value: "popular" },
+  { label: "Average rating", value: "average-rating" },
+];
+
+export const yearOptions = [
+  // i dont know will i come back here before 2030? =))
+  { label: "Clear", value: "clear" },
+  { label: `2020-${lastYear + 1}`, value: "2020-2023" },
+  { label: "2010-2019", value: "2010-2019" },
+  { label: "2000-2009", value: "2000-2009" },
+  { label: "1990-1999", value: "1990-1999" },
+  { label: "1980-1989", value: "1980-1989" },
+  { label: "1970-1979", value: "1970-1979" },
+  { label: "1960-1969", value: "1960-1969" },
+  { label: "1950-1959", value: "1950-1959" },
+];

@@ -1,4 +1,5 @@
 import { SiNintendoswitch } from "react-icons/si";
+import { MdOutlineDeviceUnknown } from "react-icons/md";
 import * as Icons from "react-icons/fa";
 
 function DynamicFaIcon({ name }: { name: string }) {
@@ -10,9 +11,15 @@ function DynamicFaIcon({ name }: { name: string }) {
   if (name === "FaNintendo") {
     return <SiNintendoswitch />;
   }
+  if (name === "FaIos") {
+    return <Icons.FaMobileAlt />;
+  }
+  if (name === "FaPc") {
+    return <Icons.FaWindows />;
+  }
   if (!IconComponent) {
     // Return a default one
-    return <Icons.FaWindows />;
+    return <MdOutlineDeviceUnknown />;
   }
 
   return <IconComponent />;

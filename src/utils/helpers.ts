@@ -23,7 +23,7 @@ export function firstCap(s: string) {
   return final;
 }
 
-export function getStartDate(s: string) {
+export function getDatesRange(s: string) {
   let startDate: Date;
   let today = new Date();
   const year = today.getFullYear();
@@ -59,6 +59,31 @@ export function getStartDate(s: string) {
   const finalToday = format(today, "yyyy-MM-dd");
 
   return { finalStartDate, finalToday };
+}
+
+export function getOrdering(slug: string) {
+  let result = "";
+  switch (slug) {
+    case "popular":
+      result = "-added";
+      break;
+    case "last-updated":
+      result = "-updated";
+      break;
+    case "metacritic":
+      result = "-metacritic";
+      break;
+    case "released-date":
+      result = "released";
+      break;
+    case "average-rating":
+      result = "-rating";
+      break;
+    default:
+      break;
+  }
+
+  return result;
 }
 
 interface Ratings {

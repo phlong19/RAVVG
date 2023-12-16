@@ -1,10 +1,11 @@
 import { KEY, baseGameURL } from "../utils/variables";
-import { getStartDate } from "../utils/helpers";
+import { getDatesRange, getOrdering } from "../utils/helpers";
 import {
   GameDetails,
   GameDetailsProps,
   GamesData,
   Order,
+  Screenshot,
 } from "../utils/model";
 
 type Date = {
@@ -31,13 +32,14 @@ interface Creators {
 }
 
 interface Screenshots {
-  results: Screenshots[];
+  results: Screenshot[];
 }
 
 export async function getGameList(
   s: string | null,
   page = 1,
-  order: Order = "popular",
+  orderValue: Order,
+  year: string,
 ) {
   let query = baseGameURL;
   let date: Date = {
@@ -46,18 +48,25 @@ export async function getGameList(
   };
 
   try {
+    const ordering = getOrdering(orderValue);
+
     if (s && s !== "home") {
-      date = getStartDate(s);
+      date = getDatesRange(s);
     }
     if (s === "home") {
-      date = getStartDate(s);
+      date = getDatesRange(s);
     }
     query =
       query +
-      `dates=${date.finalStartDate},${date.finalToday}&ordering=-added&page=${page}`;
+      `dates=${date.finalStartDate},${date.finalToday}&ordering=${ordering}&page=${page}`;
 
     if (s === null) {
-      query = baseGameURL + `page=${page}`;
+      let date = "";
+      if (year !== "none") {
+        const [startYear, endYear] = year.split("-");
+        date = "&dates=" + date + `${startYear}-01-01,${endYear}-12-31`;
+      }
+      query = baseGameURL + `page=${page}&ordering=${ordering}` + date;
     }
 
     const res = await fetch(query);

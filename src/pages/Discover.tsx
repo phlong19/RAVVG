@@ -1,6 +1,7 @@
 import GamesList from "../features/game/GamesList";
 import { useGamesList } from "../features/game/useGamesList";
 import ControlList from "../ui/ControlList";
+import EmptyPage from "../ui/EmptyPage";
 import MainLayout from "../ui/MainLayout";
 import SkeletonCardsLoading from "../ui/SkeletonCardsLoading";
 import { firstCapMoveDash } from "../utils/helpers";
@@ -20,9 +21,11 @@ function Discover({ slug }: { slug: string }) {
     );
   }
 
+  if (!results?.length) return <EmptyPage />;
+
   return (
     <MainLayout title={title}>
-      <ControlList />
+      <ControlList root={"discover/" + slug} />
       <GamesList results={results!} count={count!} />
     </MainLayout>
   );
