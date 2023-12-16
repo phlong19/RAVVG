@@ -29,7 +29,7 @@ function Home() {
 
   return (
     <MainLayout title={title} description={description}>
-      <ControlList root="" />
+      <ControlList control="home" />
       <GamesList results={results!} count={count!} />
     </MainLayout>
   );

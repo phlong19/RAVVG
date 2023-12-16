@@ -137,3 +137,16 @@ export async function getDevTeam(slug: string) {
     throw new Error("There was an error while fetching");
   }
 }
+export async function getGamesBySearch(query: string) {
+  try {
+    const queryAPI =
+      "https://api.rawg.io/api/games" + key + `&search=${query}&page_size=12`;
+    const res = await fetch(queryAPI);
+    const data: GamesData = await res.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("There was an error while searching");
+  }
+}

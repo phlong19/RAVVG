@@ -1,4 +1,5 @@
-import { GameDetailsProps, GamesData } from "../utils/model";
+import { getOrdering } from "../utils/helpers";
+import { GameDetailsProps, GamesData, Order } from "../utils/model";
 import { KEY } from "../utils/variables";
 
 // data of platforms,... anything except games
@@ -40,14 +41,30 @@ export async function getCategory(dataType: string, size: number) {
   }
 }
 
-export async function getGamesByCategory(category: string, slug: string) {
+export async function getGamesByCategory(
+  category: string,
+  slug: string,
+  order: Order,
+  year: string,
+) {
   try {
+    let date = "";
+    const ordering = getOrdering(order);
+    if (year !== "none") {
+      const [startYear, endYear] = year.split("-");
+      date = "&dates=" + date + `${startYear}-01-01,${endYear}-12-31`;
+    }
+
     // get details of a category first
     const desQuery = base + `${category}/${slug}?key=${KEY}`;
     const resDesQuery = await fetch(desQuery);
     const dataDes: CategoryDescription = await resDesQuery.json();
     // pass in the id for next query
-    const query = base + `games?${category}=${dataDes.id}&key=${KEY}`;
+    const query =
+      base +
+      `games?${category}=${dataDes.id}&key=${KEY}&ordering=${ordering}` +
+      date;
+
     const res = await fetch(query);
     const dataGames: GamesData = await res.json();
 

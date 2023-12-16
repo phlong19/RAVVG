@@ -33,7 +33,7 @@ function AllGames() {
 
   return (
     <MainLayout title={title}>
-      <ControlList root="games" />
+      <ControlList control="games" />
       <GamesList results={results!} count={count!} />
     </MainLayout>
   );

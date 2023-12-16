@@ -4,7 +4,7 @@ import { HiBars3 } from "react-icons/hi2";
 import { FaProjectDiagram, FaSignInAlt, FaUserPlus } from "react-icons/fa";
 
 import Logo from "./Logo";
-import SearchBox from "./SearchBox";
+import SearchBox from "../features/search/SearchBox";
 import Button from "./Button";
 import { apiURL } from "../utils/variables";
 import ButtonMini from "./ButtonMini";

@@ -25,7 +25,7 @@ function Discover({ slug }: { slug: string }) {
 
   return (
     <MainLayout title={title}>
-      <ControlList root={"discover/" + slug} />
+      <ControlList control="discover" />
       <GamesList results={results!} count={count!} />
     </MainLayout>
   );

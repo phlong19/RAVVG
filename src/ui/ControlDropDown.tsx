@@ -4,7 +4,6 @@ import { Option } from "../utils/model";
 interface Props {
   close: () => void;
   rect: { x: number; y: number };
-  root: string;
   ordering: string;
   options: Option[];
   query: string;

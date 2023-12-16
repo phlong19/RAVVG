@@ -12,7 +12,6 @@ interface Rect {
 }
 
 interface Props {
-  root: string;
   options: Option[];
   title: string;
   query: string;
@@ -23,7 +22,6 @@ interface Props {
 const currentYear = new Date().getFullYear();
 
 function ControlItem({
-  root,
   title,
   options,
   query,
@@ -78,7 +76,6 @@ function ControlItem({
         <ControlDropDown
           close={close}
           rect={position}
-          root={root}
           ordering={ordering}
           options={options}
           query={query}
