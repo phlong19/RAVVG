@@ -26,11 +26,9 @@ function GameInfomations({ game }: { game: GameDetails }) {
 
       {game.metacritic && (
         <DetailsBlock title="metascore" type="non-array">
-          (
           <div className="inline-block min-w-[32px] rounded border border-solid border-[#6dc849] text-center font-bold text-[#6dc849]">
             {game.metacritic}
           </div>
-          )
         </DetailsBlock>
       )}
       <DetailsBlock title="genre" array={genres} />
