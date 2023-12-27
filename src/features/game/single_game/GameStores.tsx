@@ -5,7 +5,7 @@ function GameStores({ stores }: { stores: Store[] }) {
   return (
     <div className="mt-6 w-full overflow-x-auto lg:mt-8 lg:overflow-visible">
       <h2 className="text-lg text-white/40">Available on</h2>
-      <div className="flex cursor-pointer flex-nowrap gap-2 overflow-x-auto lg:flex-wrap">
+      <div className="flex flex-nowrap gap-2 overflow-x-auto lg:flex-wrap">
         {stores.map((s, i) => (
           <button
             key={i}

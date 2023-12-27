@@ -18,7 +18,7 @@ function AppLayout() {
           <Sidebar />
         </div>
 
-        <main className="mx-auto w-full max-w-[480px] lg:mx-0 lg:max-w-full lg:pr-10">
+        <main className="mx-auto w-full max-w-[480px] lg:mx-0 lg:max-w-[calc(100%-260px)] lg:pr-10">
           <Outlet />
         </main>
       </div>
